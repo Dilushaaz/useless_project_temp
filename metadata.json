@@ -1,0 +1,6 @@
+{
+  "name": "Mango AI",
+  "description": "Bilingual Kerala-focused AI mango variety detector, taste predictor, ripeness estimator, and meme generator inspired by the proverb 'അണ്ടിയോട് അടുത്താലേ മാങ്ങയുടെ പുളി അറിയൂ'.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

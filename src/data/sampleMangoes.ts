@@ -1,0 +1,58 @@
+import { SampleMango } from '../types';
+
+export const SAMPLE_MANGOES: SampleMango[] = [
+  {
+    id: 'kuttiattoor',
+    titleEn: 'Kuttiattoor (കുറ്റ്യാട്ടൂർ)',
+    titleMl: 'കുറ്റ്യാട്ടൂർ മാങ്ങ (GI Tag)',
+    varietyHint: 'Kannur GI-tagged: Spotless golden-orange skin, oval-oblong, melt-in-mouth sweet',
+    imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=800&auto=format&fit=crop&q=80',
+    descriptionEn: 'Kannur’s prized GI-tagged mango: Spotless golden-orange skin, gentle curves, non-fibrous pure sweetness.',
+    descriptionMl: 'കണ്ണൂരിന്റെ സ്വന്തം GI Tag കുറ്റ്യാട്ടൂർ മാങ്ങ! പുള്ളികളില്ലാത്ത സ്വർണ്ണ നിറവും തേൻ മധുരവും.',
+  },
+  {
+    id: 'kilichundan',
+    titleEn: 'Kilichundan (കിളിച്ചുണ്ടൻ)',
+    titleMl: 'കിളിച്ചുണ്ടൻ (കിലിമൂക്കൻ)',
+    varietyHint: 'Parrot-beak pointed tip, elongated greenish-yellow, crispy with salt & chili',
+    imageUrl: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=800&auto=format&fit=crop&q=80',
+    descriptionEn: 'Signature curved bird-beak nose. Firm, thick skin, sharp tangy crunch with chili-salt dip.',
+    descriptionMl: 'തത്തയുടെ മൂക്കുപോലുള്ള അറ്റം! ഉപ്പും മുളകും ചേർത്ത് കഴിക്കാൻ ഏറ്റവും മികച്ച ചോയ്സ്.',
+  },
+  {
+    id: 'moovandan',
+    titleEn: 'Moovandan (മൂവാണ്ടൻ)',
+    titleMl: 'മൂവാണ്ടൻ (തറവാട് സ്പെഷ്യൽ)',
+    varietyHint: 'Classic elongated oblong with curved belly, juicy, sweet-tangy backyard icon',
+    imageUrl: 'https://images.unsplash.com/photo-1591073113125-e46713c829ed?w=800&auto=format&fit=crop&q=80',
+    descriptionEn: 'The pride of Kerala backyards. "Fruits in the third year", elongated body with juicy sweet-sour pulp.',
+    descriptionMl: 'മൂന്നാം ആണ്ടിൽ കായ്ക്കുന്ന മൂവാണ്ടൻ! ഓരോ മലയാളി തറവാടിന്റെയും ഗൃഹാതുരത്വം.',
+  },
+  {
+    id: 'chandrakkaran',
+    titleEn: 'Chandrakkaran (ചന്ദ്രക്കാരൻ)',
+    titleMl: 'ചന്ദ്രക്കാരൻ (പുളിശ്ശേരി സ്പെഷ്യൽ)',
+    varietyHint: 'Small rounded heritage mango, amber nectar, irreplaceable for Mambazha Pulissery',
+    imageUrl: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=800&auto=format&fit=crop&q=80',
+    descriptionEn: 'Small round golden heritage mango packed with sweet honey nectar, essential for Onam pulissery feast.',
+    descriptionMl: 'ചെറിയ ഉരുണ്ട നാടൻ മാമ്പഴം. ഓണത്തിനും വിഷുവിനും മാമ്പഴ പുളിശ്ശേരിക്ക് ഒന്നാം സ്ഥാനം.',
+  },
+  {
+    id: 'sindooram',
+    titleEn: 'Sindooram / Suvarnarekha',
+    titleMl: 'സിന്ദൂരം / സുവർണ്ണരേഖ',
+    varietyHint: 'Stunning bright red/crimson blush on golden skin, aromatic high sweetness',
+    imageUrl: 'https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=800&auto=format&fit=crop&q=80',
+    descriptionEn: 'Radiant scarlet-red sun blush over rich saffron skin, dessert richness with floral fragrance.',
+    descriptionMl: 'സിന്ദൂരം ചാർത്തിയതുപോലെ ചുവന്ന ഭംഗി. അതിമധുരമുള്ള തേൻ പൾപ്പ്.',
+  },
+  {
+    id: 'not-a-mango',
+    titleEn: 'Apple (Validation Test)',
+    titleMl: 'ആപ്പിൾ (ഫിൽട്ടർ ടെസ്റ്റ്)',
+    varietyHint: 'Non-mango object to verify the AI image validation guardrails',
+    imageUrl: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&auto=format&fit=crop&q=80',
+    descriptionEn: 'A crisp red apple. Used to verify the AI validation filter catches non-mango photos.',
+    descriptionMl: 'ഇത് മാങ്ങയല്ല! AI കൃത്യമായി തിരിച്ചറിയുന്നുണ്ടോ എന്ന് പരിശോധിക്കാം.',
+  },
+];
