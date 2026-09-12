@@ -44,8 +44,36 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
 
     const reader = new FileReader();
     reader.onload = () => {
-      const base64 = reader.result as string;
-      onImageSelected(base64, file.type || 'image/jpeg', file.name);
+      const rawDataUrl = reader.result as string;
+      const img = new Image();
+      img.onload = () => {
+        const MAX_DIM = 1200;
+        let { width, height } = img;
+        if (width > MAX_DIM || height > MAX_DIM) {
+          if (width > height) {
+            height = Math.round((height * MAX_DIM) / width);
+            width = MAX_DIM;
+          } else {
+            width = Math.round((width * MAX_DIM) / height);
+            height = MAX_DIM;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+          const compressed = canvas.toDataURL('image/jpeg', 0.88);
+          onImageSelected(compressed, 'image/jpeg', file.name);
+        } else {
+          onImageSelected(rawDataUrl, file.type || 'image/jpeg', file.name);
+        }
+      };
+      img.onerror = () => {
+        onImageSelected(rawDataUrl, file.type || 'image/jpeg', file.name);
+      };
+      img.src = rawDataUrl;
     };
     reader.readAsDataURL(file);
   };
