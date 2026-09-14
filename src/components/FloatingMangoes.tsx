@@ -273,26 +273,26 @@ export const FloatingMangoes: React.FC<FloatingMangoesProps> = ({
       {/* Floating Kidnapped Mango Ready Badge (Bottom Right) */}
       <div
         className={`fixed bottom-5 right-5 z-40 transition-all duration-300 ${
-          availableCredits > 0 ? 'scale-100 opacity-100' : 'scale-90 opacity-90'
+          availableCredits >= 5 ? 'scale-100 opacity-100' : 'scale-95 opacity-90'
         }`}
       >
         <div
           className={`comic-panel p-2.5 px-4 flex items-center gap-2.5 shadow-[4px_4px_0px_#000000] select-none ${
-            availableCredits > 0
+            availableCredits >= 5
               ? 'bg-gradient-to-r from-[#FFD400] to-[#FF9E1B] text-black ring-2 ring-black animate-pulse'
               : 'bg-white text-stone-700'
           }`}
-          title="Catch falling mangoes from the sky to unlock interrogations!"
+          title="Catch 5 falling mangoes from the sky to unlock interrogation!"
         >
           <span className="text-2xl animate-bounce">
             🥭
           </span>
           <div className="text-left leading-tight">
             <div className="text-[10px] font-black uppercase tracking-wider text-black">
-              {availableCredits > 0 ? 'Ready to Identify' : 'Interrogation Bounty'}
+              {availableCredits >= 5 ? 'Unlocked • Ready to Interrogate' : `Catch 5 to Unlock (${5 - availableCredits} more)`}
             </div>
             <div className="font-weirdos text-xl text-black">
-              {availableCredits} {availableCredits === 1 ? 'Mango Caught' : 'Mangoes Caught'}
+              {availableCredits}/5 Mangoes Caught
             </div>
           </div>
         </div>

@@ -70,9 +70,9 @@ export default function App() {
       const data: MangoAnalysisResult = await response.json();
       setResult(data);
 
-      // Consume 1 mango interrogation credit upon successful identification
+      // Consume 5 mango interrogation credits upon successful identification
       setCaughtMangoCount((prev) => {
-        const next = Math.max(0, prev - 1);
+        const next = Math.max(0, prev - 5);
         localStorage.setItem('mangai_caught_credits', next.toString());
         return next;
       });

@@ -19,7 +19,9 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
 
-  const isLocked = caughtMangoCount <= 0;
+  const REQUIRED_MANGOES = 5;
+  const isLocked = caughtMangoCount < REQUIRED_MANGOES;
+  const remainingToCatch = Math.max(0, REQUIRED_MANGOES - caughtMangoCount);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -158,12 +160,12 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
               }`}
             >
               <Lock className="w-3.5 h-3.5 text-rose-400" />
-              <span>🥭 Catch a mango to unlock</span>
+              <span>🥭 Catch 5 mangoes to unlock ({caughtMangoCount}/5)</span>
             </div>
           ) : (
             <div className="px-3 py-1 bg-black text-[#FFD400] text-[11px] font-black uppercase tracking-wider comic-badge shadow-none flex items-center gap-1.5 animate-pulse">
               <Unlock className="w-3.5 h-3.5 text-[#FFD400]" />
-              <span>{caughtMangoCount} {caughtMangoCount === 1 ? 'Mango' : 'Mangoes'} in Hand • Unlocked</span>
+              <span>{caughtMangoCount} Mangoes in Hand • Unlocked</span>
             </div>
           )}
         </div>
@@ -200,19 +202,21 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
             {isLocked ? (
               <div className="space-y-1">
                 <p className="text-xs sm:text-sm font-black text-rose-900 uppercase flex items-center justify-center gap-1">
-                  <span>⚠️</span> Mango Required for Interrogation
+                  <span>⚠️</span> 5 Mangoes Required ({caughtMangoCount}/5 Caught)
                 </p>
                 <p className="text-xs font-bold text-stone-800 leading-relaxed">
-                  You need a mango in hand before we can interrogate it! Click and catch any falling mango from the sky to unlock upload access.
+                  {language === 'ml'
+                    ? `അപ്‌ലോഡ് അൺലോക്ക് ചെയ്യാൻ 5 മാങ്ങകൾ പിടിക്കണം! (${caughtMangoCount}/5 കിട്ടി). ആകാശത്തുനിന്ന് വീഴുന്ന മാങ്ങകളിൽ ക്ലിക്ക് ചെയ്ത് ${remainingToCatch} മാങ്ങ കൂടി പിടിക്കൂ.`
+                    : `You need to catch 5 mangoes before we can interrogate! (${caughtMangoCount}/5 caught). Click and catch ${remainingToCatch} more falling mango${remainingToCatch === 1 ? '' : 'es'} from the sky to unlock.`}
                 </p>
               </div>
             ) : (
               <p className="text-xs sm:text-sm text-stone-900 font-bold leading-relaxed">
                 {language === 'en'
-                  ? 'Mango secured! Drop a photo or snap one now to identify its variety and predict seed sourness.'
+                  ? '5 mangoes secured! Drop a photo or snap one now to identify its variety and predict seed sourness.'
                   : language === 'ml'
-                  ? 'മാങ്ങ കയ്യിൽ കിട്ടി! ക്യാമറയിലൂടെ ഫോട്ടോയെടുക്കൂ അല്ലെങ്കിൽ അപ്‌ലോഡ് ചെയ്യൂ.'
-                  : 'Mango in hand! Upload or snap a photo to classify variety and seed sourness!'}
+                  ? '5 മാങ്ങകൾ കയ്യിൽ കിട്ടി! ക്യാമറയിലൂടെ ഫോട്ടോയെടുക്കൂ അല്ലെങ്കിൽ അപ്‌ലോഡ് ചെയ്യൂ.'
+                  : '5 mangoes secured! Upload or snap a photo to classify variety and seed sourness!'}
               </p>
             )}
           </div>
@@ -232,7 +236,13 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
             }`}
           >
             {isLocked ? <Lock className="w-4 h-4 text-stone-600" /> : <Upload className="w-4 h-4 text-black" />}
-            <span>{isLocked ? 'CATCH MANGO TO UNLOCK' : language === 'ml' ? 'ഫോട്ടോ തിരഞ്ഞെടുക്കുക' : 'CHOOSE PHOTO'}</span>
+            <span>
+              {isLocked
+                ? `CATCH ${remainingToCatch} MORE (${caughtMangoCount}/5)`
+                : language === 'ml'
+                ? 'ഫോട്ടോ തിരഞ്ഞെടുക്കുക'
+                : 'CHOOSE PHOTO'}
+            </span>
           </button>
 
           <button
@@ -247,12 +257,12 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
             }`}
           >
             {isLocked ? <Lock className="w-4 h-4 text-stone-500" /> : <Camera className="w-4 h-4 text-black" />}
-            <span>{isLocked ? 'LOCKED' : language === 'ml' ? 'ക്യാമറ' : 'SNAP PHOTO'}</span>
+            <span>{isLocked ? 'LOCKED (5 REQUIRED)' : language === 'ml' ? 'ക്യാമറ' : 'SNAP PHOTO'}</span>
           </button>
         </div>
 
         <p className="mt-4 text-[11px] font-bold text-stone-500 uppercase tracking-wider">
-          {isLocked ? '1 Catch = 1 Interrogation Credit' : 'Supports JPG, PNG, WEBP • Max 20MB'}
+          {isLocked ? `Catch 5 Mangoes to Unlock (${caughtMangoCount}/5)` : `${caughtMangoCount} Mangoes in Hand • Supports JPG, PNG, WEBP • Max 20MB`}
         </p>
       </div>
     </div>
